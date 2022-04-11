@@ -1,0 +1,22 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping package="ma.fstm.ilisi.gestion_contact.model.bo">
+   <class name = "Type" table = "type">
+      
+      <meta attribute = "class-description">
+         This class contains the type detail. 
+      </meta>
+      
+      <id name = "id" type = "long" column = "id">
+         <generator class="native"/>
+      </id>
+      <property name = "titre" column = "titre" type = "string"/>
+      <set name="contacts" table="contact" lazy="true" inverse="true">
+	      <key column="type"/>
+	      <one-to-many class="Contact"/>
+      </set>
+   </class>
+</hibernate-mapping>
